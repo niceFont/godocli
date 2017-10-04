@@ -34,6 +34,9 @@ func NewTodo(todo string, db *sql.DB) {
 	if err != nil {
 		panic(err.Error())
 	}
+
+	log.Printf("Todo '%s' added to your List.\n", todo)
+
 	wg.Done()
 }
 
@@ -50,6 +53,8 @@ func CompleteTodo(db *sql.DB, id int) {
 	if err != nil {
 		panic(err.Error())
 	}
+
+	log.Println("Todo Completed :)")
 
 	wg.Done()
 }
@@ -127,7 +132,9 @@ func main() {
 	}
 
 	fmt.Println("Connection to Database Established")
-	fmt.Println(*create, *show)
+
+	fmt.Println()
+	fmt.Println()
 
 	if *create {
 		wg.Add(1)
